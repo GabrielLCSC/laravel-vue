@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('music');
             $table->boolean('display')->default(true);
-            $table->integer('play_count');
+            $table->integer('play_count')->default(0);
             $table->timestamps();
         });
     }

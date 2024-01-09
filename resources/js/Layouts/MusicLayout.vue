@@ -190,9 +190,8 @@
                     <slot name="action" />
                 </div>
             </div>
+            <slot name="content"></slot>
         </div>
-
-        <slot name="content"></slot>
     </div>
 </template>
 <script>
