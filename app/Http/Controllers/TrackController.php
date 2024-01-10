@@ -28,7 +28,7 @@ class TrackController extends Controller
       'artist' => ['string', 'required', 'max:255'],
       'display' => ['boolean', 'required'],
       'image' => ['image', 'max:255'],
-      'music' => ['file', 'required', 'extensions:mp3, wav'],
+      'music' => ['file', 'required', 'extensions:mp3,wav'],
     ]);
 
     $uuid = Str::uuid();
@@ -49,6 +49,18 @@ class TrackController extends Controller
     ]);
 
     return redirect()->route('tracks.index');
+
+  }
+
+  public function edit(Track $track) {
+    return Inertia::render('Track/Edit', ['track' => $track]);
+  }
+
+  public function update() {
+
+  }
+
+  public function destroy() {
 
   }
 }

@@ -1,6 +1,6 @@
 <template>
     <MusicLayout>
-        <template #title> Musiques </template>
+        <template #title> Modifier une musique {{ track.title }} </template>
 
         <template #action>
             <Link :href="route('tracks.index')"> Retour </Link>
@@ -119,6 +119,11 @@ export default {
     components: {
         MusicLayout,
         Link,
+    },
+    props: {
+        track: {
+            type: Object,
+        },
     },
     data() {
         return {

@@ -17,23 +17,12 @@
         <template #content>
             <div class="card__section">
                 <div class="card__container">
-                    <div
+                    <Track
                         v-for="track in filteredTracks"
                         :key="track.uuid"
-                        class="card"
-                        @click="play(track)"
-                    >
-                        <div class="image__container">
-                            <img :src="'/storage/' + track.image" alt="test" />
-                        </div>
-                        <div class="card__description">
-                            <div class="flex_illustration">
-                                <div class="svg__illustration"></div>
-                                <h3>{{ track.title }}</h3>
-                            </div>
-                            <p>{{ track.artist }}</p>
-                        </div>
-                    </div>
+                        :track="track"
+                        @played="play"
+                    />
                 </div>
             </div>
         </template>
@@ -43,11 +32,13 @@
 <script>
 import MusicLayout from "@/Layouts/MusicLayout.vue";
 import { Link } from "@inertiajs/vue3";
+import Track from "@/Components/Track/Track.vue";
 
 export default {
     components: {
         MusicLayout,
         Link,
+        Track,
     },
     props: {
         tracks: {
