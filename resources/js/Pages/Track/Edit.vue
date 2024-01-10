@@ -43,44 +43,6 @@
                     <p class="text-red-500 text-xs italic">
                         {{ form.errors.artist }}
                     </p>
-
-                    <label
-                        class="mt-6 block text-gray-700 text-sm font-bold mb-2"
-                        for="image"
-                    >
-                        Image
-                    </label>
-                    <input
-                        id="image"
-                        name="image"
-                        @input="form.image = $event.target.files[0]"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        :class="{ 'border-red-500': form.errors.image }"
-                        type="file"
-                        placeholder="Image"
-                    />
-                    <p class="text-red-500 text-xs italic">
-                        {{ form.errors.image }}
-                    </p>
-
-                    <label
-                        class="mt-6 block text-gray-700 text-sm font-bold mb-2"
-                        for="music"
-                    >
-                        Music
-                    </label>
-                    <input
-                        id="music"
-                        @input="form.music = $event.target.files[0]"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        :class="{ 'border-red-500': form.errors.music }"
-                        type="file"
-                        placeholder="music"
-                    />
-                    <p class="text-red-500 text-xs italic">
-                        {{ form.errors.music }}
-                    </p>
-
                     <label
                         class="mt-6 block text-gray-700 text-sm font-bold mb-2"
                         for="display"
@@ -128,17 +90,15 @@ export default {
     data() {
         return {
             form: this.$inertia.form({
-                title: "",
-                artist: "",
-                image: null,
-                music: null,
-                display: true,
+                title: this.track.title,
+                artist: this.track.artist,
+                display: this.track.display ? true : false,
             }),
         };
     },
     methods: {
         submit() {
-            this.form.post(route("tracks.store"));
+            this.form.put(route("tracks.update", { track: this.track }));
         },
     },
 };

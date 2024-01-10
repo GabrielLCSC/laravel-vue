@@ -56,12 +56,25 @@ class TrackController extends Controller
     return Inertia::render('Track/Edit', ['track' => $track]);
   }
 
-  public function update() {
+  public function update(Request $request, Track $track) {
+    $request->validate([
+      'title' => ['string', 'required', 'max:255'],
+      'artist' => ['string', 'required', 'max:255'],
+      'display' => ['boolean', 'required'],
+    ]);
 
+    $track->title = $request->title;
+    $track->artist = $request->artist;
+    $track->display = $request->display;
+    $track->save();
+
+    return redirect()->route('tracks.index');
   }
 
-  public function destroy() {
+  public function destroy(Track $track) {
+    $track->delete();
 
+    return redirect()->route('tracks.index');
   }
 }
 
