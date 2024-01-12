@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('playlists', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->unique();
+            $table->string('uuid')->unique();
             $table->string('title');
             $table->timestamps();
             $table->foreignId('user_id')->constrained();

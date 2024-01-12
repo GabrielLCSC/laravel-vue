@@ -13,7 +13,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'),
     'verified'])->group(function () {
       Route::resource('playlists', PlaylistController::class)->except(['edit', 'update']);
 
-      Route::middleware(['is_admin'])->group(function () {
+      Route::middleware(['admin'])->group(function () {
         Route::get('tracks/create', [TrackController::class, 'create'])->name('tracks.create');
 
         Route::post('tracks', [TrackController::class, 'store'])->name('tracks.store');
