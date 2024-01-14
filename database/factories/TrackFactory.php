@@ -22,7 +22,7 @@ class TrackFactory extends Factory
             'title' => $this->faker->sentence(3),
             'artist' => $this->faker->name(),
             'image' => 'tracks/images/painauchocolat.jpg',
-            'music' => 'tracks/music/test.wav',
+            'music' => 'tracks/musics/test.wav',
             'display' => true,
             'play_count' => 0,
             //

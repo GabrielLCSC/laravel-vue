@@ -11,7 +11,8 @@
                     placeholder="search"
                 />
             </div>
-            <Link :href="route('tracks.create')"> Créer une musique </Link>
+            <Link v-if="$page.props.isAdmin" :href="route('tracks.create')"> Créer une musique </Link>
+
         </template>
 
         <template #content>
